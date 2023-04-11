@@ -179,15 +179,16 @@ const BlockSelector = observer(
             "blockSelector blockChooser input" +
             (this.props.showBlockTypeSelector ? "blockSelectorDisplay" : "")
           }
+          style={{display: "flex", columnGap: "10px"}}
         >
-          {this.props.showBlockTypeSelector ? <div
+         <div
             className={
               "menu-handler" +
               (this._getBlockControlModel().hasTitle ? " menutitle" : "")
             }
           >
             {Menu}
-          </div> : null}
+          </div> 
           <div className={`control display`} onClick={this.props.onClick}>
             {this.props.children}
           </div>

@@ -37,10 +37,12 @@ const Block = observer((props) => {
     handleDragEnd,
     handleDrag,
     className,
-    item,
-    parent,
-    draggedItem,
+    item = {},
+    parent = {},
+    draggedItem = {},
+    draggable = true,
     id,
+    style={}
   } = props;
   const dummyRef = useRef();
   const block = props.store?.findBlockInCurrentPage(props?.blockId);
@@ -131,7 +133,8 @@ const Block = observer((props) => {
       onDragEnd={handleDragEnd}
       onDrag={handleDrag}
       id={id}
-      draggable
+      draggable={draggable}
+      style={style}
     >
       <HoverableComponent onHover={(hover) => _onHover(hover, props?.blockId)}>
         <BlockSelector

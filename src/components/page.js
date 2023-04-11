@@ -285,10 +285,9 @@ const Page = observer((props) => {
     }
     return updatedChildren;
   };
-
   return (
     <div className="page">
-      {parents.map((parent) => {
+      {parents.slice(0, parents.length - 2).map((parent) => {
         return (
           <div
             key={parent.id}
@@ -312,20 +311,23 @@ const Page = observer((props) => {
           </div>
         );
       })}
-
-      {/* {getSortedBlockArray().map((cols, rowIndex) => (
-        <div className="pagerow" key={"row_" + rowIndex} id={"row_" + rowIndex}>
-          {cols?.map((block) => (
-            <Block
-              key={block.id}
-              onHandleMenuAction={onHandleMenuAction}
-              blockId={block.id}
-              store={store}
-              onReturnKeyPressed={async (_) => await onReturnKeyPressed(block)}
-            />
-          ))}
-        </div>
-      ))} */}
+      {console.log(
+        "parents[parents.length - 2]?.children",
+        parents[parents.length - 2]?.children[0].id
+      )}
+      { parents.length && parents[parents.length - 2]?.children?.map((block) => (
+        <Block
+          key={block.id}
+          onHandleMenuAction={onHandleMenuAction}
+          blockId={block.id}
+          store={store}
+          onReturnKeyPressed={async (_) => await onReturnKeyPressed(block)}
+          item={block}
+          draggable={false}
+          className="child"
+          style={{cursor: "pointer"}}
+        />
+      ))}
     </div>
   );
 });
