@@ -576,6 +576,7 @@ class rootStore {
     runInAction(() => {
       //update the block content for the current page
       const block = this.findBlockInCurrentPage(blockId);
+      console.log('block', block)
       if (!block) return;
 
       const needToAddNewDummyBlock = block?.isDummy && !keepDummyFlag;

@@ -21,9 +21,6 @@ const Page = observer((props) => {
 
   const storeBlock = store.blocksForCurrentPage;
 
-  // const getSortedBlockArray = (_) =>
-  //   rowColArray.handleCreateChildParentRelation(store.blocksForCurrentPage);
-
   useEffect(() => {
     if (storeBlock.length === 0) return;
     setParents(rowColArray.handleCreateChildParentRelation(storeBlock));
@@ -31,15 +28,17 @@ const Page = observer((props) => {
 
   const onReturnKeyPressed = async (block) => {
     if (block) {
+      console.log('block', block)
       // it's coming from a non dummy block we need to give the focus to the next block
       const nextBlock = rowColArray.getNextRowBlock(
         store.blocksForCurrentPage,
         block.row
       );
-      if (nextBlock) store.setFocusedBlockId(nextBlock.id);
+
+      if (false) store.setFocusedBlockId(nextBlock.id);
       else {
         // it was the last block, need to update it and add a new dummy one
-        await store.updateBlock(block.id, block.content, "none");
+        await store.updateBlock(block.id, block.content, "textType", "", block.row, block.col);
       }
     }
   };
@@ -161,17 +160,26 @@ const Page = observer((props) => {
       },
       ...updatedParents
         .filter((i) => i.children.length)
-        .map((j, index) => [
-          {
-            id: `droppable${2 * index + 1}`,
-            children: j.children.map((k, colIndex) => ({
-              ...k,
-              col: colIndex,
+        .map((j, index) => {
+          if (j.id === targetParentId) {
+            onReturnKeyPressed({
+              ...j.children[placeholderIndex],
               row: index,
-            })),
-          },
-          { id: `droppable${2 * index + 2}`, children: [] },
-        ])
+              col: placeholderIndex,
+            });
+          }
+          return [
+            {
+              id: `droppable${2 * index + 1}`,
+              children: j.children.map((k, colIndex) => ({
+                ...k,
+                col: colIndex,
+                row: index,
+              })),
+            },
+            { id: `droppable${2 * index + 2}`, children: [] },
+          ];
+        })
         .flat(),
     ];
     setParents(handleAddIntermediateDroppable);
