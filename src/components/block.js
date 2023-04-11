@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { observer } from "mobx-react";
 import { HoverableComponent } from "./hoverableComponent";
 import { BlockSelector } from "./blockSelector";
 import cellControls, { Control } from "./cellControls";
 import "./block.css";
+import classNames from "classnames";
 
 const Imp = observer((props) => {
   const [value, setValue] = useState(props.initialValue);
@@ -30,6 +31,18 @@ const Imp = observer((props) => {
 });
 
 const Block = observer((props) => {
+  const {
+    draggedElementRef,
+    handleDragStart,
+    handleDragEnd,
+    handleDrag,
+    className,
+    item,
+    parent,
+    draggedItem,
+    id,
+  } = props;
+  const dummyRef = useRef();
   const block = props.store?.findBlockInCurrentPage(props?.blockId);
   const hasFocus = props.store?.focusedBlockId === props?.blockId;
   let inputRef = undefined;
@@ -107,8 +120,18 @@ const Block = observer((props) => {
   return props?.blockId ? (
     <div
       key={props?.blockId}
-      className="block"
+      className={classNames({ [className]: className })}
       onClick={(e) => _onClick(props?.blockId, e)}
+      ref={
+        item.id === draggedItem.item?.id && draggedItem.parentId === parent.id
+          ? draggedElementRef
+          : dummyRef
+      }
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDrag={handleDrag}
+      id={id}
+      draggable
     >
       <HoverableComponent onHover={(hover) => _onHover(hover, props?.blockId)}>
         <BlockSelector

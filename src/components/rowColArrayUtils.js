@@ -109,7 +109,42 @@ const getRowOrderedColOrderedArray = (def = []) => {
     cols.push(element);
   });
   if (cols.length > 0) rows.push(cols.sort((a, b) => a.col - b.col));
+
   return rows;
+};
+
+const handleCreateChildParentRelation = (def = []) => {
+  const groupByRows = def.reduce((group, child) => {
+    const { row } = child;
+    group[row] = group[row] ?? [];
+    group[row].push(child);
+    return group;
+  }, {});
+
+  const sortedCard = Object.values(groupByRows).reduce((prev, curr, index) => {
+    prev[index] = curr.sort((a, b) => a.col - b.col);
+    return prev;
+  }, {});
+
+  return Object.values(sortedCard).reduce(
+    (prev, curr, index) => {
+      prev.push({
+        id: `droppable${2 * index + 1}`,
+        children: curr,
+      });
+      prev.push({
+        id: `droppable${2 * index + 2}`,
+        children: [],
+      });
+      return prev;
+    },
+    [
+      {
+        id: "droppable0",
+        children: [],
+      },
+    ]
+  );
 };
 
 const rowColArray = {
@@ -124,6 +159,7 @@ const rowColArray = {
   calcRowColPositionsInArray,
   findItemCoordinates,
   getRowOrderedColOrderedArray,
+  handleCreateChildParentRelation
 };
 
 export default rowColArray;

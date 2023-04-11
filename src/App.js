@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { observer } from "mobx-react";
 import store, { createNewEmptyBlock } from "./store/rootStore";
 import { Page } from "./components/page";
@@ -13,12 +13,18 @@ const App = observer((_) => {
     return () => {};
   }, [store.currentUser === undefined]);
 
+  const clientXRef = useRef();
+
+  const handleGetDragOver = (e) => {
+    clientXRef.current = e.clientX;
+  };
+
   return (
-    <div className="App">
+    <div className="App" onDragOver={handleGetDragOver}>
       <div className="content e-sidebar-context">
         <div className="main-sidebar-content">
           <div>
-            <Page />
+            <Page clientXRef={clientXRef} />
           </div>
         </div>
       </div>
