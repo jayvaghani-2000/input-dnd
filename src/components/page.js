@@ -311,10 +311,6 @@ const Page = observer((props) => {
           </div>
         );
       })}
-      {console.log(
-        "parents[parents.length - 2]?.children",
-        parents[parents.length - 2]?.children[0].id
-      )}
       { parents.length && parents[parents.length - 2]?.children?.map((block) => (
         <Block
           key={block.id}
