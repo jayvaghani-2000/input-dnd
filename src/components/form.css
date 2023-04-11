@@ -1,0 +1,49 @@
+.line {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.w100 {
+  width: 100%
+}
+
+.field:first {
+  padding-top:10px;
+}
+
+.field {
+  padding-bottom:15px;
+}
+
+.field div:first-child {
+  font-size: 0.9em
+}
+.fullSize {
+  text-align: center;
+  width: 100%
+}
+.field input {
+  width: 100% !important;
+  padding: 10px 10px 10px 10px !important;
+  border: 1px solid lightgray !important
+}
+.form .row {
+  padding: 5px;
+  border: 1px solid white;
+  margin: 1px;
+}
+.form .col {
+  padding-right: 10px;
+}
+.form .field {
+  padding: 10px;
+  border: 1px solid white;
+  margin: 0px;
+  background-color: yellow;
+}
+

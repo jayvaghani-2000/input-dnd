@@ -1,0 +1,8 @@
+.page {
+  padding:10px
+}
+
+.page .pagerow {
+  display:flex;
+  flex-direction: row;
+}

@@ -1,0 +1,135 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.App {
+  text-align: left;
+  background-color: white;
+  height:100vh;
+  color:black;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  font-size: 16px
+}
+.App .content {
+  height: 100%
+}
+.App .main-sidebar-content.e-sidebar-context {
+  height:100%
+}
+.blockChooser.blockSelectorDisplay .e-input-group.e-control-wrapper {
+  margin-bottom: 0px !important;
+}
+
+.blockChooser.blockSelectorDisplay input.e-input {
+  padding:0px !important
+}
+
+.blockSelector .e-control.e-toolbar .e-toolbar-items{
+  border: 1px solid lightgray;
+  border-radius: 10%;
+}
+
+.blockChooser .hideInputBorder .e-ddl.e-input-group.e-control-wrapper.e-input-focus::before, 
+.blockChooser .hideInputBorder .e-ddl.e-input-group.e-control-wrapper.e-input-focus::after ,
+.blockChooser .hideInputBorder .e-ddl.e-input-group.e-control-wrapper.e-input-focus,
+.blockChooser .hideInputBorder .e-ddl.e-input-group.e-control-wrapper::after,
+.blockChooser .hideInputBorder .e-ddl.e-input-group.e-control-wrapper::before,
+.blockChooser .hideInputBorder .e-input-group.e-control-wrapper {
+    background: none;
+    transition: none;
+    border: none !important;
+}
+
+/* block */
+.block {
+  margin: 0px;
+  border-width: 1px;
+  border-color:  transparent;
+  border-style: solid;
+  border-radius: 0px;
+  background-color: white;
+  width:auto
+}
+
+.block.editMode:hover {
+  background-color: rgb(253, 249, 249);
+  border-color: rgb(236, 233, 233);
+}
+
+.block .child {
+  margin-left:20px
+}
+
+.block .h1, .h1 {
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+/* fonts */
+.underline {
+  text-decoration: underline;
+}
+.bold {
+  font-weight: 400;
+}
+.italic {
+  font-style: italic;
+}
+
+/* colors */
+.red {
+  color:red !important
+}
+.black {
+  color: black !important
+}
+.blue {
+  color:blue !important
+}
+.chocolate {
+  color:chocolate !important
+}
+.white {
+  color:white !important
+}
+.yellow {
+  color:yellow !important
+}
+.violet {
+  color:blueviolet !important
+}
+.darkgray {
+  color:darkgray !important
+}
+.green {
+  color:green !important
+}
+.gray {
+  color: gray!important
+}
+.bRed {
+  background-color: red;
+}
+
+/* layout */
+.grid {
+  display:flex;
+  flex-direction: column;
+}
+
+.row {
+  display:flex;
+  flex-direction: row;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.column {
+  display:flex;
+  flex-direction: column;
+  width:100%
+}
