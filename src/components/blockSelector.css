@@ -5,9 +5,9 @@
   color: #8d8f91 !important;
 }
 .blockSelector.blockChooser {
-  display:flex;
-  padding:4px 0px 4px 0px;
-} 
+  display: flex;
+  padding: 4px 0px 4px 0px;
+}
 
 .blockSelector.blockChooser .menu-handler {
   color: gray;
@@ -17,14 +17,14 @@
 }
 
 .blockSelector.blockChooser .menu-handler .show {
-visibility: visible;
+  visibility: visible;
 }
 
-.blockSelector.blockChooser .menu-handler.menutitle .menuHandle{
+.blockSelector.blockChooser .menu-handler.menutitle .menuHandle {
   padding: 0.8em 10px 0.8em 0px;
 }
 
-.blockSelector.blockChooser .menuHandle, 
+.blockSelector.blockChooser .menuHandle,
 .blockSelector.blockChooser .menuHandle i {
-  padding-right: 5px
+  padding-right: 5px;
 }
