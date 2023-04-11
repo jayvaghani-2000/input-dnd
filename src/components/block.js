@@ -150,7 +150,7 @@ const Block = observer((props) => {
           canBeDupplicated={!block?.isDummy}
           onBlockContextMenuClick={_handleMenuAction}
         >
-          <div onClick={(e) => _onClick(props?.blockId, e)}>
+          <div onClick={(e) => _onClick(props?.blockId, e)}> 
             {Control(
               {
                 store: props.store,

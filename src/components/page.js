@@ -207,7 +207,7 @@ const Page = observer((props) => {
   };
 
   const handleDragStart = (event, item) => {
-    setDragXDifference(event.clientX - item.index * 120);
+    setDragXDifference(event.clientX - item.index * 150);
     setDraggedItem(item);
     event.target.style.boxShadow = "inset 0 0 10px 10px rgba(39, 43, 84, 0.5)";
   };
@@ -229,7 +229,7 @@ const Page = observer((props) => {
       draggedElementRef.current.classList.add("handleRemoveSelectedElement");
     }
     const dragBetweenIndex = Math.round(
-      (clientXRef.current - dragXDifference) / 120
+      (clientXRef.current - dragXDifference) / 150
     );
     if (
       placeholderIndex !== dragBetweenIndex &&

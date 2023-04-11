@@ -25,6 +25,7 @@ const PlainInput =
         onChange={(e) =>
           props.onChange && props.onChange({ value: e.target.value })
         }
+        style={{ width: "calc(100% - 10px)"}}
         value={props.value}
         onKeyDown={_onKeyDown}
       />
