@@ -209,7 +209,9 @@ const Page = observer((props) => {
   const handleDragStart = (event, item) => {
     setDragXDifference(event.clientX - item.index * 150);
     setDraggedItem(item);
-    event.target.style.boxShadow = "inset 0 0 10px 10px rgba(39, 43, 84, 0.5)";
+    event.target.style.boxShadow =
+      "inset 0 0 40px 1px rgba(166, 170, 204, 0.6)";
+    event.target.style.background = "rgba(189, 181, 213,0.1)";
   };
 
   const handleDragEnd = (e) => {
