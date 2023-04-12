@@ -150,6 +150,11 @@ const BlockSelector = observer(
     _getControls = (_) =>
       BlockSelectorControls.map((ctrl) => ({ ...ctrl, control: undefined }));
 
+    _handleInnerDivDragStart = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
     render() {
       const Menu = (
         <>
@@ -174,23 +179,26 @@ const BlockSelector = observer(
       );
 
       return (
-        <div
-          className={
-            "blockSelector blockChooser input" +
-            (this.props.showBlockTypeSelector ? "blockSelectorDisplay" : "")
-          }
-          style={{display: "flex", columnGap: "10px"}}
-        >
-         <div
+        <div className="childWithHandler">
+          <div
             className={
               "menu-handler" +
               (this._getBlockControlModel().hasTitle ? " menutitle" : "")
             }
           >
             {Menu}
-          </div> 
-          <div className={`control display`} onClick={this.props.onClick}>
-            {this.props.children}
+          </div>
+          <div
+            className={
+              "blockSelector blockChooser input inputWrapper" +
+              (this.props.showBlockTypeSelector ? "blockSelectorDisplay" : "")
+            }
+            draggable={true}
+            onDragStart={this._handleInnerDivDragStart}
+          >
+            <div className={`control display`} onClick={this.props.onClick}>
+              {this.props.children}
+            </div>
           </div>
         </div>
       );
